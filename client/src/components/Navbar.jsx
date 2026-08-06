@@ -15,7 +15,7 @@ export default function Navbar() {
   return (
     <nav className="navbar">
       <div className="navbar-top">
-        <Link to="/" className="navbar-brand">📦 StockKeeper</Link>
+        <Link to="/" className="navbar-brand">📦 Inventory Management System</Link>
         <button className="hamburger-btn" onClick={() => setMenuOpen(!menuOpen)}>
           {menuOpen ? '✕' : '☰'}
         </button>

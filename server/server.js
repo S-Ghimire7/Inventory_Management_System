@@ -14,9 +14,7 @@ const PORT = process.env.PORT || 5000;
 
 // middleware
 app.use(
-  cors({
-    origin: "https://inventory-management-system-1-w4pp.onrender.com",
-  }),
+  cors({ origin: "https://inventory-management-system-1-w4pp.onrender.com" }),
 );
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

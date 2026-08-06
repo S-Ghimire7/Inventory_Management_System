@@ -5,19 +5,19 @@ const AuthContext = createContext(null)
 
 export function AuthProvider({ children }) {
   // check localStorage first so refreshing the page doesn't log you out
-  const [token, setToken] = useState(localStorage.getItem('stockkeeper_token') || null)
-  const [username, setUsername] = useState(localStorage.getItem('stockkeeper_user') || null)
+  const [token, setToken] = useState(localStorage.getItem('invapp_token') || null)
+  const [username, setUsername] = useState(localStorage.getItem('invapp_user') || null)
 
   function loginUser(newToken, newUsername) {
-    localStorage.setItem('stockkeeper_token', newToken)
-    localStorage.setItem('stockkeeper_user', newUsername)
+    localStorage.setItem('invapp_token', newToken)
+    localStorage.setItem('invapp_user', newUsername)
     setToken(newToken)
     setUsername(newUsername)
   }
 
   function logoutUser() {
-    localStorage.removeItem('stockkeeper_token')
-    localStorage.removeItem('stockkeeper_user')
+    localStorage.removeItem('invapp_token')
+    localStorage.removeItem('invapp_user')
     setToken(null)
     setUsername(null)
   }
