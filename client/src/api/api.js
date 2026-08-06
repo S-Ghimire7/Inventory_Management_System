@@ -1,6 +1,6 @@
 // little wrapper functions around fetch so the pages don't repeat this stuff everywhere
 
-const BASE_URL = "https://inventory-management-system-82wi.onrender.com/api"; // vite proxies this to the express server during dev
+const BASE_URL = "https://inventory-management-system-82wi.onrender.com"; // vite proxies this to the express server during dev
 
 function getAuthHeaders() {
   const token = localStorage.getItem("stockkeeper_token");
