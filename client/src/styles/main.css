@@ -1,0 +1,511 @@
+/* ===========================================
+   StockKeeper - main stylesheet
+   kept simple on purpose, just flexbox/grid,
+   no css framework, easier to explain in the demo
+   =========================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
+  background-color: #f4f6f8;
+  color: #222;
+}
+
+.app-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px 20px 60px 20px;
+  width: 100%;
+}
+
+/* ---------- navbar ---------- */
+
+.navbar {
+  background-color: #2b5d4f;
+  color: white;
+  padding: 14px 20px;
+}
+
+.navbar-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-brand {
+  color: white;
+  text-decoration: none;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.hamburger-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 10px;
+}
+
+.navbar-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.navbar-links a:hover {
+  text-decoration: underline;
+}
+
+.navbar-username {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.navbar-logout-btn {
+  background-color: #d9534f;
+  color: white;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.navbar-logout-btn:hover {
+  background-color: #c9302c;
+}
+
+/* ---------- generic buttons ---------- */
+
+.btn {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: white;
+  color: #333;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+.btn:hover {
+  background-color: #eee;
+}
+
+.btn-primary {
+  background-color: #2b5d4f;
+  color: white;
+  border-color: #2b5d4f;
+}
+
+.btn-primary:hover {
+  background-color: #234b40;
+}
+
+.btn-danger {
+  background-color: #d9534f;
+  color: white;
+  border-color: #d9534f;
+}
+
+.btn-danger:hover {
+  background-color: #c9302c;
+}
+
+.btn-small {
+  padding: 4px 10px;
+  font-size: 0.85rem;
+}
+
+.btn-full {
+  width: 100%;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ---------- page header row ---------- */
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+/* ---------- filter bar ---------- */
+
+.filter-bar {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+
+.search-input {
+  flex: 1;
+  min-width: 200px;
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.filter-bar select {
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* ---------- data table ---------- */
+
+.table-wrapper {
+  overflow-x: auto;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.data-table th, .data-table td {
+  text-align: left;
+  padding: 10px 12px;
+  border-bottom: 1px solid #eee;
+}
+
+.data-table th {
+  background-color: #f0f2f0;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.data-table tr:hover {
+  background-color: #fafafa;
+}
+
+.low-stock-row {
+  background-color: #fdecea;
+}
+
+.low-stock-row:hover {
+  background-color: #fbdedb;
+}
+
+.low-stock-badge {
+  display: inline-block;
+  background-color: #d9534f;
+  color: white;
+  font-size: 0.7rem;
+  padding: 2px 7px;
+  border-radius: 10px;
+  margin-left: 8px;
+  vertical-align: middle;
+}
+
+.actions-cell {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.thumb-img {
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.thumb-placeholder {
+  width: 48px;
+  height: 48px;
+  background-color: #e0e0e0;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.6rem;
+  color: #888;
+  text-align: center;
+}
+
+.large-placeholder {
+  width: 100%;
+  height: 260px;
+  font-size: 0.9rem;
+}
+
+.product-link {
+  color: #2b5d4f;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.product-link:hover {
+  text-decoration: underline;
+}
+
+/* ---------- forms ---------- */
+
+.entity-form {
+  background: white;
+  padding: 24px;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  max-width: 550px;
+}
+
+.form-group {
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-row {
+  display: flex;
+  gap: 16px;
+}
+
+.form-row .form-group {
+  flex: 1;
+}
+
+.form-group label {
+  margin-bottom: 5px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  padding: 9px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 0.95rem;
+  font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  outline: 2px solid #2b5d4f;
+  outline-offset: 1px;
+}
+
+.field-error {
+  color: #d9534f;
+  font-size: 0.8rem;
+  margin-top: 4px;
+}
+
+.field-hint {
+  color: #777;
+  font-size: 0.78rem;
+  margin-top: 4px;
+}
+
+.current-image-preview {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-bottom: 8px;
+}
+
+.button-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+/* ---------- login page ---------- */
+
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 60px;
+}
+
+.login-box {
+  background: white;
+  padding: 32px;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  width: 100%;
+  max-width: 380px;
+}
+
+.login-subtext {
+  color: #666;
+  margin-top: -8px;
+  margin-bottom: 20px;
+  font-size: 0.9rem;
+}
+
+.login-hint {
+  text-align: center;
+  color: #888;
+  font-size: 0.8rem;
+  margin-top: 16px;
+}
+
+/* ---------- product view page ---------- */
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 16px;
+  color: #2b5d4f;
+  text-decoration: none;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+.product-view-card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  display: flex;
+  gap: 24px;
+  padding: 24px;
+}
+
+.product-view-image {
+  flex: 0 0 260px;
+}
+
+.product-view-image img {
+  width: 100%;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.product-view-details {
+  flex: 1;
+}
+
+.product-desc {
+  color: #555;
+  margin: 12px 0;
+}
+
+.detail-row {
+  margin-bottom: 8px;
+}
+
+/* ---------- misc ---------- */
+
+.error-banner {
+  background-color: #fdecea;
+  color: #a94442;
+  border: 1px solid #f5c6cb;
+  padding: 10px 14px;
+  border-radius: 6px;
+  margin-bottom: 16px;
+}
+
+.muted-text {
+  color: #777;
+}
+
+/* ===========================================
+   responsive breakpoints
+   =========================================== */
+
+@media (max-width: 768px) {
+  .hamburger-btn {
+    display: block;
+  }
+
+  .navbar-links {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .navbar-links-open {
+    display: flex;
+  }
+
+  .product-view-card {
+    flex-direction: column;
+  }
+
+  .product-view-image {
+    flex: none;
+  }
+
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  /* stack the table into cards instead of horizontal scroll, easier to use on a phone */
+  .data-table thead {
+    display: none;
+  }
+
+  .data-table, .data-table tbody, .data-table tr, .data-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .data-table tr {
+    margin-bottom: 12px;
+    border: 1px solid #eee;
+    border-radius: 6px;
+    padding: 8px;
+  }
+
+  .data-table td {
+    border-bottom: none;
+    padding: 6px 8px;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .data-table td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: #555;
+  }
+
+  .actions-cell {
+    justify-content: flex-end;
+  }
+}
