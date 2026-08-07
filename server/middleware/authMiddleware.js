@@ -1,5 +1,3 @@
-// this middleware checks that a valid admin token was sent before letting
-// the request continue to the actual route logic
 const jwt = require('jsonwebtoken');
 
 function requireLogin(req, res, next) {

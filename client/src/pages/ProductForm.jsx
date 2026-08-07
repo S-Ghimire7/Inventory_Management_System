@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { fetchOneProduct, fetchSuppliers, saveProduct } from '../api/api.js'
 
 export default function ProductForm() {
-  const { id } = useParams() // if this exists we're editing, otherwise we're creating
+  const { id } = useParams()
   const isEditMode = !!id
   const navigate = useNavigate()
 
@@ -40,10 +40,8 @@ export default function ProductForm() {
         setPageLoading(false)
       })
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id])
 
-  // client side validation, gives instant feedback before we even hit the server
   function validateForm() {
     const errors = {}
 

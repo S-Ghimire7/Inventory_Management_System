@@ -1,5 +1,3 @@
-// run this once with "npm run seed" to create the first admin account
-// and a couple of example suppliers/products so the app isn't empty when you demo it
 require('dotenv').config();
 const bcrypt = require('bcryptjs');
 const sequelize = require('./config/db');

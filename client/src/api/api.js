@@ -16,8 +16,6 @@ export async function loginRequest(username, password) {
   return data;
 }
 
-// ---- products ----
-
 export async function fetchProducts(searchTerm, supplierId) {
   const params = new URLSearchParams();
   if (searchTerm) params.append("search", searchTerm);
@@ -44,7 +42,7 @@ export async function saveProduct(formData, productId) {
 
   const res = await fetch(url, {
     method: isEditing ? "PUT" : "POST",
-    headers: getAuthHeaders(), // no Content-Type here, the browser sets it for FormData
+    headers: getAuthHeaders(),
     body: formData,
   });
   const data = await res.json();
@@ -61,8 +59,6 @@ export async function deleteProductRequest(id) {
   if (!res.ok) throw data;
   return data;
 }
-
-// ---- suppliers ----
 
 export async function fetchSuppliers() {
   const res = await fetch(`${BASE_URL}/suppliers`);

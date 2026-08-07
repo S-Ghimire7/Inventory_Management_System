@@ -10,8 +10,6 @@ const {
   deleteProduct
 } = require('../controllers/productController');
 
-// reading products is public so visitors can browse the catalogue,
-// but adding/editing/deleting requires you to be logged in as admin
 router.get('/', getAllProducts);
 router.get('/:id', getOneProduct);
 router.post('/', requireLogin, upload.single('productImage'), createProduct);

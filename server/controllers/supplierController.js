@@ -1,4 +1,3 @@
-// CRUD logic for suppliers
 const { Supplier, Product } = require('../models');
 
 function validateSupplierFields(body) {
@@ -18,7 +17,6 @@ function validateSupplierFields(body) {
   return errors;
 }
 
-// GET /api/suppliers
 async function getAllSuppliers(req, res) {
   try {
     const suppliers = await Supplier.findAll({ order: [['supName', 'ASC']] });
@@ -29,7 +27,6 @@ async function getAllSuppliers(req, res) {
   }
 }
 
-// GET /api/suppliers/:id
 async function getOneSupplier(req, res) {
   try {
     const supplier = await Supplier.findByPk(req.params.id);
@@ -43,7 +40,6 @@ async function getOneSupplier(req, res) {
   }
 }
 
-// POST /api/suppliers
 async function createSupplier(req, res) {
   try {
     const fieldErrors = validateSupplierFields(req.body);
@@ -64,7 +60,6 @@ async function createSupplier(req, res) {
   }
 }
 
-// PUT /api/suppliers/:id
 async function updateSupplier(req, res) {
   try {
     const supplier = await Supplier.findByPk(req.params.id);
@@ -89,7 +84,6 @@ async function updateSupplier(req, res) {
   }
 }
 
-// DELETE /api/suppliers/:id
 async function deleteSupplier(req, res) {
   try {
     const supplier = await Supplier.findByPk(req.params.id);
@@ -97,8 +91,6 @@ async function deleteSupplier(req, res) {
       return res.status(404).json({ message: 'Supplier not found' });
     }
 
-    // stop them from deleting a supplier that still has products attached
-    // this keeps the data consistent instead of leaving orphaned products
     const productCount = await Product.count({ where: { supplierId: supplier.id } });
     if (productCount > 0) {
       return res.status(400).json({

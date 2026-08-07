@@ -5,7 +5,7 @@ import { useAuth } from '../context/AuthContext.jsx'
 export default function Navbar() {
   const { isLoggedIn, username, logoutUser } = useAuth()
   const navigate = useNavigate()
-  const [menuOpen, setMenuOpen] = useState(false) // for the little hamburger menu on mobile
+  const [menuOpen, setMenuOpen] = useState(false)
 
   function handleLogout() {
     logoutUser()
@@ -15,7 +15,7 @@ export default function Navbar() {
   return (
     <nav className="navbar">
       <div className="navbar-top">
-        <Link to="/" className="navbar-brand">📦 Inventory Management System</Link>
+        <Link to="/" className="navbar-brand">Inventory Management System</Link>
         <button className="hamburger-btn" onClick={() => setMenuOpen(!menuOpen)}>
           {menuOpen ? '✕' : '☰'}
         </button>

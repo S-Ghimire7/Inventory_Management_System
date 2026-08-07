@@ -1,10 +1,8 @@
-// all the CRUD logic for products lives here
 const { Op } = require('sequelize');
 const fs = require('fs');
 const path = require('path');
 const { Product, Supplier } = require('../models');
 
-// GET /api/products  (supports ?search=xyz&supplierId=2)
 async function getAllProducts(req, res) {
   try {
     const { search, supplierId } = req.query;
@@ -32,7 +30,6 @@ async function getAllProducts(req, res) {
   }
 }
 
-// GET /api/products/:id
 async function getOneProduct(req, res) {
   try {
     const product = await Product.findByPk(req.params.id, {
@@ -50,8 +47,6 @@ async function getOneProduct(req, res) {
   }
 }
 
-// small helper to check the fields the client sent us before we save anything
-// server side validation is the real source of truth, client validation is just for nice UX
 function validateProductFields(body) {
   const errors = {};
 
@@ -80,18 +75,15 @@ function validateProductFields(body) {
   return errors;
 }
 
-// POST /api/products
 async function createProduct(req, res) {
   try {
     const fieldErrors = validateProductFields(req.body);
 
     if (Object.keys(fieldErrors).length > 0) {
-      // if they uploaded a file but the rest of the form was bad, clean up the orphan file
       if (req.file) fs.unlinkSync(req.file.path);
       return res.status(400).json({ message: 'Please fix the errors below', errors: fieldErrors });
     }
 
-    // make sure the supplier they picked actually exists
     const supplierExists = await Supplier.findByPk(req.body.supplierId);
     if (!supplierExists) {
       if (req.file) fs.unlinkSync(req.file.path);
@@ -118,7 +110,6 @@ async function createProduct(req, res) {
   }
 }
 
-// PUT /api/products/:id
 async function updateProduct(req, res) {
   try {
     const product = await Product.findByPk(req.params.id);
@@ -140,7 +131,6 @@ async function updateProduct(req, res) {
       return res.status(400).json({ message: 'Please fix the errors below', errors: { supplierId: 'That supplier does not exist' } });
     }
 
-    // if a new image was uploaded, delete the old one so we don't fill up the disk
     let oldImageToDelete = null;
     if (req.file && product.imagePath) {
       oldImageToDelete = path.join(__dirname, '..', 'uploads', product.imagePath);
@@ -172,7 +162,6 @@ async function updateProduct(req, res) {
   }
 }
 
-// DELETE /api/products/:id
 async function deleteProduct(req, res) {
   try {
     const product = await Product.findByPk(req.params.id);
@@ -181,7 +170,6 @@ async function deleteProduct(req, res) {
       return res.status(404).json({ message: 'Product not found' });
     }
 
-    // remove the image file off disk too, no point keeping it around
     if (product.imagePath) {
       const imgPath = path.join(__dirname, '..', 'uploads', product.imagePath);
       if (fs.existsSync(imgPath)) fs.unlinkSync(imgPath);

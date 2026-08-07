@@ -1,5 +1,6 @@
 import { Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar.jsx'
+import Footer from './components/Footer.jsx'
 import ProtectedRoute from './components/ProtectedRoute.jsx'
 
 import Login from './pages/Login.jsx'
@@ -58,6 +59,8 @@ function App() {
           <Route path="*" element={<div className="page-container"><h1>404 - Page Not Found</h1></div>} />
         </Routes>
       </main>
+
+      <Footer />
     </div>
   )
 }

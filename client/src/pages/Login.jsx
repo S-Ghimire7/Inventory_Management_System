@@ -16,7 +16,6 @@ export default function Login() {
     e.preventDefault()
     setErrorMsg('')
 
-    // quick client side check before we even bother the server
     if (!usernameInput.trim() || !passwordInput.trim()) {
       setErrorMsg('Please fill in both fields')
       return

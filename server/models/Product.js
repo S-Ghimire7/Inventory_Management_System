@@ -1,4 +1,3 @@
-// product model - this is the main entity of the inventory system
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/db');
 const Supplier = require('./Supplier');
@@ -37,11 +36,10 @@ const Product = sequelize.define('Product', {
   },
   imagePath: {
     type: DataTypes.STRING,
-    allowNull: true // filename of the uploaded product image, can be empty if none uploaded
+    allowNull: true
   }
 });
 
-// a product belongs to one supplier, a supplier can have many products
 Product.belongsTo(Supplier, { foreignKey: 'supplierId', onDelete: 'CASCADE' });
 Supplier.hasMany(Product, { foreignKey: 'supplierId' });
 

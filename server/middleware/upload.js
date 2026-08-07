@@ -1,4 +1,3 @@
-// handles saving uploaded product images to the uploads folder
 const multer = require('multer');
 const path = require('path');
 
@@ -7,7 +6,6 @@ const storage = multer.diskStorage({
     cb(null, path.join(__dirname, '..', 'uploads'));
   },
   filename: function (req, file, cb) {
-    // stick a timestamp on the front so two uploads with the same name don't clash
     const uniqueName = Date.now() + '-' + file.originalname.replace(/\s+/g, '_');
     cb(null, uniqueName);
   }
@@ -27,7 +25,7 @@ function checkFileType(file, cb) {
 
 const upload = multer({
   storage: storage,
-  limits: { fileSize: 5 * 1024 * 1024 }, // 5mb max, plenty for a product photo
+  limits: { fileSize: 5 * 1024 * 1024 },
   fileFilter: function (req, file, cb) {
     checkFileType(file, cb);
   }

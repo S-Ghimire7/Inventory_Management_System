@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { fetchProducts, fetchSuppliers, deleteProductRequest } from '../api/api.js'
 import { useAuth } from '../context/AuthContext.jsx'
 
-const LOW_STOCK_LIMIT = 5 // anything below this number of units gets flagged red
+const LOW_STOCK_LIMIT = 5
 
 export default function ProductList() {
   const [products, setProducts] = useState([])
@@ -21,7 +21,6 @@ export default function ProductList() {
 
   useEffect(() => {
     loadProducts()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchBox, supplierFilter])
 
   async function loadProducts() {
@@ -48,6 +47,9 @@ export default function ProductList() {
       alert(err.message || 'Could not delete product')
     }
   }
+
+  const totalStockValue = products.reduce((sum, p) => sum + (Number(p.price) * Number(p.stockQty)), 0)
+  const totalUnits = products.reduce((sum, p) => sum + Number(p.stockQty), 0)
 
   return (
     <div className="page-container">
@@ -76,6 +78,23 @@ export default function ProductList() {
       </div>
 
       {errorMsg && <div className="error-banner">{errorMsg}</div>}
+
+      {!loading && products.length > 0 && (
+        <div className="summary-bar">
+          <div className="summary-item">
+            <span className="summary-label">Products Shown</span>
+            <span className="summary-value">{products.length}</span>
+          </div>
+          <div className="summary-item">
+            <span className="summary-label">Total Units In Stock</span>
+            <span className="summary-value">{totalUnits}</span>
+          </div>
+          <div className="summary-item">
+            <span className="summary-label">Total Inventory Value</span>
+            <span className="summary-value">£{totalStockValue.toFixed(2)}</span>
+          </div>
+        </div>
+      )}
 
       {loading ? (
         <p className="muted-text">Loading products...</p>

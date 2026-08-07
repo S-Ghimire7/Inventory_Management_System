@@ -1,4 +1,3 @@
-// user model - this is our admin login table, separate from business data
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/db');
 

@@ -1,10 +1,8 @@
-// keeps track of whether the admin is logged in, across the whole app
 import { createContext, useContext, useState } from 'react'
 
 const AuthContext = createContext(null)
 
 export function AuthProvider({ children }) {
-  // check localStorage first so refreshing the page doesn't log you out
   const [token, setToken] = useState(localStorage.getItem('invapp_token') || null)
   const [username, setUsername] = useState(localStorage.getItem('invapp_user') || null)
 

@@ -31,7 +31,7 @@ body {
 /* ---------- navbar ---------- */
 
 .navbar {
-  background-color: #2b5d4f;
+  background-color: #1f4e8c;
   color: white;
   padding: 14px 20px;
 }
@@ -99,13 +99,14 @@ body {
 .btn {
   display: inline-block;
   padding: 8px 16px;
-  border-radius: 5px;
+  border-radius: 6px;
   border: 1px solid #ccc;
   background-color: white;
   color: #333;
   text-decoration: none;
   cursor: pointer;
   font-size: 0.95rem;
+  transition: background-color 0.15s ease, box-shadow 0.15s ease;
 }
 
 .btn:hover {
@@ -154,7 +155,13 @@ body {
   align-items: center;
   flex-wrap: wrap;
   gap: 10px;
-  margin-bottom: 18px;
+  margin-bottom: 20px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #e2e5e2;
+}
+
+.page-header h1 {
+  margin: 0;
 }
 
 /* ---------- filter bar ---------- */
@@ -178,6 +185,35 @@ body {
   padding: 8px 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
+}
+
+.summary-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+  padding: 14px 20px;
+  margin-bottom: 18px;
+}
+
+.summary-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.summary-item .summary-label {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: #888;
+}
+
+.summary-item .summary-value {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1f4e8c;
 }
 
 /* ---------- data table ---------- */
@@ -439,6 +475,20 @@ body {
   color: #777;
 }
 
+.site-footer {
+  margin-top: auto;
+  padding: 16px 20px;
+  text-align: center;
+  border-top: 1px solid #e2e5e2;
+  background-color: white;
+}
+
+.site-footer p {
+  margin: 0;
+  font-size: 0.82rem;
+  color: #888;
+}
+
 /* ===========================================
    responsive breakpoints
    =========================================== */
@@ -507,5 +557,10 @@ body {
 
   .actions-cell {
     justify-content: flex-end;
+  }
+
+  .summary-bar {
+    flex-direction: column;
+    gap: 10px;
   }
 }

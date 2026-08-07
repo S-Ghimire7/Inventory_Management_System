@@ -1,4 +1,3 @@
-// supplier model - holds the companies that supply our products
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/db');
 
